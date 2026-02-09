@@ -1,0 +1,19 @@
+name: CI pipeline
+
+on:
+  push:
+    branches: [main, test]
+
+jobs:
+  mypipeline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    env:
+      STATE: success
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Print status
+        run: echo "Build timeout is 5 minutes and state is $STATE"
