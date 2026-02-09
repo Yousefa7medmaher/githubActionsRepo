@@ -12,9 +12,10 @@ on:
           -  testing 
           -  developing 
           -  production 
+          
 jobs: 
   deploy: 
     runs-on: ubuntu-latest
     steps:
       - name: deploy-app
-        run: echo "deploying the applications"
+        run: echo "deploying the applications ${{ inputs.environment }}"
