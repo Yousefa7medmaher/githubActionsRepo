@@ -12,11 +12,12 @@ on:
       - "release/**"
 jobs: 
   test: 
-    runs-on: ubuntu:latest 
+    runs-on: ubuntu-latest 
     steps:
       - name: Checkout Code
         uses: actions/checkout@v6.0.2
       - name: Run Tests 
         run: npm test 
           
+
       
