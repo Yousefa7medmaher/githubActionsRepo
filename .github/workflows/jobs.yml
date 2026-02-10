@@ -9,10 +9,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: List files 
-        run: ls -la 
       - name: adds the temp directory 
         run: mkdir -p ./temp
+      - name: List files 
+        run: ls -la 
       - name: Install and build project
         run: |
           npm install
