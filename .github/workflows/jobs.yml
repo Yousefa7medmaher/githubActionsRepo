@@ -7,12 +7,15 @@ on:
 jobs:
   job_1:
     runs-on: ubuntu-latest
+
     steps:
-      - run: |
-          npm install 
-          npm run build 
+      - name: Install and build project
+        run: |
+          npm install
+          npm run build
         working-directory: ./temp
-        shell: bash # pwsh , cmd , powershell , python 
-      - run: print %ENV
+        shell: bash
+
+      - name: Print environment variables using Perl
+        run: print %ENV
         shell: perl {0}
-        
