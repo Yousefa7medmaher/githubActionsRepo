@@ -1,24 +1,27 @@
-name: jobs-in same box 
+name: jobs-in-same-box
 
 on:
-  workflow_dispatch: 
+  workflow_dispatch:
+
 jobs:
   job1:
     runs-on: ubuntu-20.04
     steps:
-      - name: " job 1"
-        run: "echo build the image unsing the 'docker build -t .' " 
-  job2: 
-      runs-on: ubuntu-22.04
-      steps:
-        - name: "job 2"
-          run: | 
-            "echo check if the image is already exist "
-            "echo cehck if the registery is ready to push the image" 
-            "echo push the image after building it to the registery"
+      - name: job 1
+        run: echo "Build the image using docker build -t ."
+
+  job2:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: job 2
+        run: |
+          echo "Check if the image already exists"
+          echo "Check if the registry is ready to push the image"
+          echo "Push the image after building it to the registry"
+
   job3:
-      runs-on: ubuntu-latest
-      needs: [job1,job2]
-      steps:
-        - name: "job3 "
-          run: "echo run the final job"
+    runs-on: ubuntu-latest
+    needs: [job1, job2]
+    steps:
+      - name: job 3
+        run: echo "Run the final job"
