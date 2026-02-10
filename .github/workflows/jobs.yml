@@ -11,8 +11,14 @@ jobs:
     steps:
       - name: adds the temp directory 
         run: mkdir -p ./temp
+      - name: Init npm project 
+        run: npm init -y 
+        working-directory: ./temp
+      - name: Install dependencies 
+        run: npm install 
+        working-directory: ./temp
       - name: List files 
-        run: ls -la 
+        run: ls -R ; ls -la 
       - name: Install and build project
         run: |
           npm install
