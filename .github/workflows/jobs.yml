@@ -7,25 +7,21 @@ on:
 jobs:
   job_1:
     runs-on: ubuntu-latest
-
     steps:
-      - name: adds the temp directory 
-        run: mkdir -p ./temp
-      - name: Init npm project 
-        run: npm init -y 
-        working-directory: ./temp
-      - name: Install dependencies 
-        run: npm install 
-        working-directory: ./temp
-      - name: List files 
-        run: ls -R ; ls -la 
-      - name: Install and build project
+      - name: Create project
         run: |
-          npm install
-          npm run build
-        working-directory: ./temp
-        shell: bash
+          mkdir -p temp
+          cd temp
+          npm init -y
 
-      - name: Print environment variables using Perl
-        run: print %ENV
-        shell: perl {0}
+      - name: Add build script
+        run: npm pkg set scripts.build="echo Building project..."
+        working-directory: ./temp
+
+      - name: Install dependencies
+        run: npm install
+        working-directory: ./temp
+
+      - name: Run build
+        run: npm run build
+        working-directory: ./temp
