@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: List files 
         run: ls -la 
+      - name: adds the temp directory 
+        run: mkdir -p ./temp
       - name: Install and build project
         run: |
           npm install
