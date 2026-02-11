@@ -1,20 +1,20 @@
-# Use official Node.js LTS image
+# Use official Node image
 FROM node:20-alpine
 
 # Set working directory
 WORKDIR /app
 
-# Copy package files first (better caching)
+# Copy package.json first (for caching)
 COPY package*.json ./
 
 # Install dependencies
 RUN npm install
 
-# Copy rest of the application
+# Copy the rest of the project
 COPY . .
 
-# Expose app port
+# Expose port if needed (remove if not a server)
 EXPOSE 3000
 
-# Start the app
-CMD ["npm", "start"]
+# Start the app from src folder
+CMD ["node", "src/app.js"]
