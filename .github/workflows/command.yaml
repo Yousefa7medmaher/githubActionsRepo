@@ -1,0 +1,12 @@
+name: commands on GithubActions 
+on:  
+  workflow_dispatch: 
+jobs:
+  exmaple:
+    runs-on: ubuntu-latest
+    steps:
+      - run: | 
+          deprecated=true 
+          if [[ deprecated ]]; then 
+            echo " ::warning::Deprecated function found"
+          fi 
