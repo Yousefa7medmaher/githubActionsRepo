@@ -1,0 +1,31 @@
+name: Send email if commit contains fix
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  filtering-and-send-email:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check if commit contains fix
+        if: ${{ contains(github.event.head_commit.message, 'fix') }}
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          secure: true
+          username: ${{ secrets.EMAIL_USERNAME }}
+          password: ${{ secrets.EMAIL_PASSWORD }}
+          subject: "Fix Commit Detected"
+          body: |
+            A commit containing the word "fix" was pushed.
+            
+            Commit message:
+            ${{ github.event.head_commit.message }}
+            
+            Author: ${{ github.actor }}
+          to: ya1770620@gmail.com
+          from: GitHub Actions
