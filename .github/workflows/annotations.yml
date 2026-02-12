@@ -4,11 +4,17 @@ jobs:
   show-messages:
     runs-on: ubuntu-latest
     steps:
-      - name: Check if a file exist 
-        run: | 
-          if [ -f "config.yaml" ]; then 
-            echo "::debug::config.yaml exists" 
-          else
-            echo "::error::config.yaml is missing "
-          fi 
+      # - name: Check if a file exist 
+      #   run: | 
+      #     if [ -f "config.yaml" ]; then 
+      #       echo "::debug::config.yaml exists" 
+      #     else
+      #       echo "::error::config.yaml is missing "
+      #     fi 
           
+        - name: Set API key 
+          run: echo "API_KEY=12345" >> $GITHUB_ENV 
+        - name: Use API key 
+          run: | 
+            echo "::add-mask::$API_KEY"
+            echo "Using API KEY $API_KEY"
