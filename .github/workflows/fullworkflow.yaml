@@ -1,0 +1,29 @@
+name: best practise work githubactions workflow 
+
+on:
+  push:
+    branches:
+      -  main 
+      - features 
+  pull_request: 
+    branches: [ main ]
+
+jobs:
+  build-app:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ ubuntu-latest , windows-latest , macos-latest ] 
+        node-version: [ 14, 16 , 18]  
+        exclude:
+          - os: windows-latest 
+            node-version: 18 
+      fail-fast: false 
+    steps:
+      -  name: checkout the code 
+         uses: actions/checkout@v6.0.2
+
+      - run: npm init 
+        continue-on-error:  true
+      - run: npm install 
+        continue-on-error:  true
