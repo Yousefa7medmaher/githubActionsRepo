@@ -29,3 +29,5 @@ jobs:
         continue-on-error:  true
       - run: npm install 
         continue-on-error:  true
+
+      - run:  ls -la 
